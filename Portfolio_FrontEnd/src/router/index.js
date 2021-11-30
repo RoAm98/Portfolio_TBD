@@ -4,6 +4,8 @@ import Home from '../views/PortHome.vue'
 
 Vue.use(VueRouter)
 
+global.backendurl= "http://localhost:3000"
+
 const routes = [
   {
     path: '/',

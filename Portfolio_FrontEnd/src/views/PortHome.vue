@@ -81,11 +81,15 @@
         <!-- Portfolio Grid Items-->
         <div class="row justify-content-center">
           <!-- Portfolio Item 1-->
-          <div class="col-md-6 col-lg-4 mb-5">
+          <div
+            class="col-md-6 col-lg-4 mb-5"
+            v-for="(picture, i) in pictures"
+            :key="i"
+          >
             <div
               class="portfolio-item mx-auto"
               data-bs-toggle="modal"
-              data-bs-target="#portfolioModal1"
+              :data-bs-target="'#portfolioModal' + i*1 +1 "
             >
               <div
                 class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100"
@@ -98,122 +102,7 @@
               </div>
               <img
                 class="img-fluid"
-                src="assets/img/portfolio/cabin.png"
-                alt="..."
-              />
-            </div>
-          </div>
-          <!-- Portfolio Item 2-->
-          <div class="col-md-6 col-lg-4 mb-5">
-            <div
-              class="portfolio-item mx-auto"
-              data-bs-toggle="modal"
-              data-bs-target="#portfolioModal2"
-            >
-              <div
-                class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100"
-              >
-                <div
-                  class="portfolio-item-caption-content text-center text-white"
-                >
-                  <i class="fas fa-plus fa-3x"></i>
-                </div>
-              </div>
-              <img
-                class="img-fluid"
-                src="assets/img/portfolio/cake.png"
-                alt="..."
-              />
-            </div>
-          </div>
-          <!-- Portfolio Item 3-->
-          <div class="col-md-6 col-lg-4 mb-5">
-            <div
-              class="portfolio-item mx-auto"
-              data-bs-toggle="modal"
-              data-bs-target="#portfolioModal3"
-            >
-              <div
-                class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100"
-              >
-                <div
-                  class="portfolio-item-caption-content text-center text-white"
-                >
-                  <i class="fas fa-plus fa-3x"></i>
-                </div>
-              </div>
-              <img
-                class="img-fluid"
-                src="assets/img/portfolio/circus.png"
-                alt="..."
-              />
-            </div>
-          </div>
-          <!-- Portfolio Item 4-->
-          <div class="col-md-6 col-lg-4 mb-5 mb-lg-0">
-            <div
-              class="portfolio-item mx-auto"
-              data-bs-toggle="modal"
-              data-bs-target="#portfolioModal4"
-            >
-              <div
-                class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100"
-              >
-                <div
-                  class="portfolio-item-caption-content text-center text-white"
-                >
-                  <i class="fas fa-plus fa-3x"></i>
-                </div>
-              </div>
-              <img
-                class="img-fluid"
-                src="assets/img/portfolio/game.png"
-                alt="..."
-              />
-            </div>
-          </div>
-          <!-- Portfolio Item 5-->
-          <div class="col-md-6 col-lg-4 mb-5 mb-md-0">
-            <div
-              class="portfolio-item mx-auto"
-              data-bs-toggle="modal"
-              data-bs-target="#portfolioModal5"
-            >
-              <div
-                class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100"
-              >
-                <div
-                  class="portfolio-item-caption-content text-center text-white"
-                >
-                  <i class="fas fa-plus fa-3x"></i>
-                </div>
-              </div>
-              <img
-                class="img-fluid"
-                src="assets/img/portfolio/safe.png"
-                alt="..."
-              />
-            </div>
-          </div>
-          <!-- Portfolio Item 6-->
-          <div class="col-md-6 col-lg-4">
-            <div
-              class="portfolio-item mx-auto"
-              data-bs-toggle="modal"
-              data-bs-target="#portfolioModal6"
-            >
-              <div
-                class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100"
-              >
-                <div
-                  class="portfolio-item-caption-content text-center text-white"
-                >
-                  <i class="fas fa-plus fa-3x"></i>
-                </div>
-              </div>
-              <img
-                class="img-fluid"
-                src="assets/img/portfolio/submarine.png"
+                :src="'assets/img/portfolio/' + picture"
                 alt="..."
               />
             </div>
@@ -298,6 +187,7 @@
                   type="text"
                   placeholder="Enter your name..."
                   data-sb-validations="required"
+                  v-model="form.fullname"
                 />
                 <label for="name">Full name</label>
                 <div class="invalid-feedback" data-sb-feedback="name:required">
@@ -312,6 +202,7 @@
                   type="email"
                   placeholder="name@example.com"
                   data-sb-validations="required,email"
+                  v-model="form.email"
                 />
                 <label for="email">Email address</label>
                 <div class="invalid-feedback" data-sb-feedback="email:required">
@@ -329,6 +220,7 @@
                   type="tel"
                   placeholder="(123) 456-7890"
                   data-sb-validations="required"
+                  v-model="form.phonenumber"
                 />
                 <label for="phone">Phone number</label>
                 <div class="invalid-feedback" data-sb-feedback="phone:required">
@@ -344,6 +236,7 @@
                   placeholder="Enter your message here..."
                   style="height: 10rem"
                   data-sb-validations="required"
+                  v-model="form.message"
                 ></textarea>
                 <label for="message">Message</label>
                 <div
@@ -381,6 +274,7 @@
                 class="btn btn-primary btn-xl disabled"
                 id="submitButton"
                 type="submit"
+                @click="sendmessage()"
               >
                 Send
               </button>
@@ -445,6 +339,7 @@
       tabindex="-1"
       aria-labelledby="portfolioModal1"
       aria-hidden="true"
+      v-for="(project, i) in projects" :key="i"
     >
       <div class="modal-dialog modal-xl">
         <div class="modal-content">
@@ -464,7 +359,7 @@
                   <h2
                     class="portfolio-modal-title text-secondary text-uppercase mb-0"
                   >
-                    Log Cabin
+                    {{ project.Title }}
                   </h2>
                   <!-- Icon Divider-->
                   <div class="divider-custom">
@@ -477,25 +372,19 @@
                   <!-- Portfolio Modal - Image-->
                   <img
                     class="img-fluid rounded mb-5"
-                    src="assets/img/portfolio/cabin.png"
+                    :src="'assets/img/portfolio/' + pictures[0]"
                     alt="..."
                   />
                   <!-- Portfolio Modal - Text-->
                   <p class="mb-4">
-                    This is an example of creating an array of objects that
-                    allow the user to register, sign in and create a list of
-                    links that they can edit or delete. It also has some
-                    pagination but this was around when I first started so the
-                    pagination was limited to 1 item per page.
+                    {{ project.Description }}
                   </p>
-                  <a href="https://github.com/RoAm98/Links_Manager.git">
+                  <a :href="project.Link" target="_blank">
                     Open In Github
                   </a>
-                  <button
-                    class="btn btn-primary"
-                    href="#!"
-                    data-bs-dismiss="modal"
-                  >
+                  <br />
+                  <br />
+                  <button class="btn btn-primary" data-bs-dismiss="modal">
                     <i class="fas fa-times fa-fw"></i>
                     Close Window
                   </button>
@@ -545,7 +434,7 @@
                   <!-- Portfolio Modal - Image-->
                   <img
                     class="img-fluid rounded mb-5"
-                    src="assets/img/portfolio/cake.png"
+                    :src="'assets/img/portfolio/' + pictures[1]"
                     alt="..."
                   />
                   <!-- Portfolio Modal - Text-->
@@ -788,7 +677,7 @@
             <div class="container">
               <div class="row justify-content-center">
                 <div class="col-lg-8">
-                  <!-- Portfolio Modal - Title-->
+                  Portfolio Modal - Title
                   <h2
                     class="portfolio-modal-title text-secondary text-uppercase mb-0"
                   >
@@ -839,26 +728,57 @@ export default {
   name: "page-top",
   data() {
     return {
-      projects : []
-    }
+      projects: [
+        {
+          Title: "",
+          Description: "",
+          Link: "",
+        },
+      ],
+      pictures: [
+        "linkspic.png",
+        "librarypic.png",
+        "DepnEmpPic.png",
+        "AirTravel.PNG",
+        "MovieRent.PNG",
+        "IssuesManagerExp.png",
+      ],
+      form: {
+        fullname: "",
+        email: "",
+        phonenumber: "",
+        message: ""
+      }
+    };
   },
-  methods:{
+  methods: {
     getprojects: function () {
-     let $this = this;
+      let $this = this;
       $.ajax({
         url: `http://localhost:3000/getprojects`,
         type: "GET",
-        success: (data, status) => {
+        success: async (data, status) => {
           if (status === "success") {
-            $this.projects = data;
-            console.log($this.projects);
+            $this.projects = await JSON.parse(data);
           }
+        },
+      });
+    },
+    sendmessage: function () {
+      $.ajax({
+        type: "POST",
+        url: `${backendurl}/sendmessage`,
+        data: this.form,
+        success: function (data, status) {
+          if (status == "success") alert("Email sent successfully!");
         },
       });
     }
   },
-  mounted(){
+  created() {
     this.getprojects();
-  }
-}
+    console.log(this.projects);
+    // console.log(this.projects[0].Description)
+  },
+};
 </script>

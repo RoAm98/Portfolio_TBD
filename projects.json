@@ -1,0 +1,35 @@
+[{
+  "_id": {
+    "$oid": "6197ae9daba3ba445167fece"
+  },
+  "Title": "Links Manager",
+  "Description": "This is an example of creating an array of objects that allow the user to register, sign in and create a list of links that they can edit or delete. It also has some pagination but this was around when I first started so the pagination was limited to 1 item per page. ",
+  "Link": "https://github.com/RoAm98/Links_Manager.git"
+},{
+  "_id": {
+    "$oid": "6197b866aba3ba445167fecf"
+  },
+  "Title": "Library",
+  "Description": "This was one of my last projects I worked on. It's a library page I made using Vue, Express, and MySQL. This one on allows the person to register a new user/customer, add and or remove books to the library's list of books, rent out a book of the user's choice, edit and delete rents that are in the system, and edit and delete the users'/customer's information",
+  "Link": "https://github.com/RoAm98/Library_Vue_Express_MySQL"
+},{
+  "_id": {
+    "$oid": "6197bb1daba3ba445167fed0"
+  },
+  "Title": "Employees and Departments",
+  "Description": "This was one of my first projects where I had to make a page using Express and MySQL. It allows the user to register new employees to the system and assign them to a department where they will work. It also allows us to make new Departments. When using MySQL I had to make a connection between the 2 tables by giving every employee a department ID to act as the foreign key of the Departments Table. "
+},{
+  "_id": {
+    "$oid": "6197bd5faba3ba445167fed1"
+  },
+  "Title": "Air Travel",
+  "Description": "This is a simple WFA (Windows Form Application) that I developed that allows you to purchase a flight ticket for either one way or roundtrip. It also has conditionals that if one way is chosen then you don't need to choose a return date, but if round trip is chosen then a second date time picker will be enabled for you to choose a return date not only that but has been made so that the return date can not be the same or before as the departure date. After everything has been selected it will tell you the final price for your ticket and show you a receipt with all the information that put in.",
+  "Link": "https://github.com/RoAm98/Flight_Ticket_WFA"
+},{
+  "_id": {
+    "$oid": "6197bf21aba3ba445167fed2"
+  },
+  "Title": "Movie Rent",
+  "Description": "This another WFA (Windows Form App) that I created where a person can rent movies for a certain amount of time and also they could add movies to the application. It also allows the user to see what movies have been checked out by searching for keywords that the user inputs. The application also allows for movies, rents, and customers information be created, edited or deleted from the system.",
+  "Link": "https://github.com/RoAm98/Movie_Rent_WFA"
+}]
