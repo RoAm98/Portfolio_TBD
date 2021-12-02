@@ -4,7 +4,7 @@ import Home from '../views/PortHome.vue'
 
 Vue.use(VueRouter)
 
-global.backendurl= "http://localhost:3000"
+global.backendurl= "https://rogeram-portfolio.herokuapp.com"
 
 const routes = [
   {

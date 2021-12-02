@@ -332,16 +332,14 @@
       </div>
     </div>
     <!-- Portfolio Modals-->
-    <div  v-for="(project, i) in projects"
-        :key="i">
+    <div v-for="(project, i) in projects" :key="i">
       <!-- Portfolio Modal 1-->
       <div
         class="portfolio-modal modal fade"
-        :id="'portfolioModal'+(i+1)"
+        :id="'portfolioModal' + (i + 1)"
         tabindex="-1"
-        :aria-labelledby="'portfolioModal'+ (i+1)"
+        :aria-labelledby="'portfolioModal' + (i + 1)"
         aria-hidden="true"
-       
       >
         <div class="modal-dialog modal-xl">
           <div class="modal-content">
@@ -406,9 +404,40 @@ export default {
     return {
       projects: [
         {
-          Title: "",
-          Description: "",
-          Link: "",
+          Title: "Links Manager",
+          Description:
+            "This is an example of creating an array of objects that allow the user to register, sign in and create a list of links that they can edit or delete. It also has some pagination but this was around when I first started so the pagination was limited to 1 item per page. ",
+          Link: "https://github.com/RoAm98/Links_Manager.git",
+        },
+        {
+          Title: "Library",
+          Description:
+            "This was one of my last projects I worked on. It's a library page I made using Vue, Express, and MySQL. This one on allows the person to register a new user/customer, add and or remove books to the library's list of books, rent out a book of the user's choice, edit and delete rents that are in the system, and edit and delete the users'/customer's information",
+          Link: "https://github.com/RoAm98/Library_Vue_Express_MySQL",
+        },
+        {
+          Title: "Employees and Departments",
+          Description:
+            "This was one of my first projects where I had to make a page using Express and MySQL. It allows the user to register new employees to the system and assign them to a department where they will work. It also allows us to make new Departments. When using MySQL I had to make a connection between the 2 tables by giving every employee a department ID to act as the foreign key of the Departments Table. ",
+          Link: "https://github.com/RoAm98/Employees_Departments",
+        },
+        {
+          Title: "Air Travel",
+          Description:
+            "This is a simple WFA (Windows Form Application) that I developed that allows you to purchase a flight ticket for either one way or roundtrip. It also has conditionals that if one way is chosen then you don't need to choose a return date, but if round trip is chosen then a second date time picker will be enabled for you to choose a return date not only that but has been made so that the return date can not be the same or before as the departure date. After everything has been selected it will tell you the final price for your ticket and show you a receipt with all the information that put in.",
+          Link: "https://github.com/RoAm98/Flight_Ticket_WFA",
+        },
+        {
+          Title: "Movie Rent",
+          Description:
+            "This another WFA (Windows Form App) that I created where a person can rent movies for a certain amount of time and also they could add movies to the application. It also allows the user to see what movies have been checked out by searching for keywords that the user inputs. The application also allows for movies, rents, and customers information be created, edited or deleted from the system.",
+          Link: "https://github.com/RoAm98/Movie_Rent_WFA",
+        },
+        {
+          Title: "Issues Manager with Express",
+          Description:
+            "In here I developed an application to manage issues in a cellphone store using Express JS. The application shows a page to manage the issues with three input fields: description, severity (low, medium or high), and assigned to (must be selected from data stored in the database). Each time an issue is added, an ID number is generated for this issue. The system controls the issue status (open or closed). After the issue is added, it can be closed or deleted. ",
+          Link: "https://github.com/RoAm98/IssuesManager_ExpressOriginal",
         },
       ],
       pictures: [
@@ -452,7 +481,7 @@ export default {
     },
   },
   created() {
-    this.getprojects();
+    // this.getprojects();
     console.log(this.projects);
     // console.log(this.projects[0].Description)
   },
